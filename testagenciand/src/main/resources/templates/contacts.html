@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8"/>
+
+    <title>Contactos</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+    
+ 	<link href="#" th:href="@{/css/contacts.css}" rel="stylesheet" />
+ 	
+  </head>
+
+  <body>
+	
+	<div class="container">
+		<h1>CONTACTOS</h1>
+		<br/>
+		<div class="panel panel-default">
+			<div class="panel-heading"></div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Cedula</th>
+						<th>Nombre</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="persona : ${personas}"  th:object="${persona}">
+						<td th:text="${persona.cedula}"></td>
+						<td th:text="${persona.nombre}"></td>
+						<td th:text="${persona.email}"></td>
+						<td>
+							<a class="btn btn-warning" th:href="@{/persona/mostrarPersona/} + ${persona.cedula}">Editar
+								<i class="fa fa-edit"></i></a>
+							<a class="btn btn-warning" th:href="@{/persona/eliminarPersona/} + ${persona.cedula}">Eliminar
+								<i class="fa fa-edit"></i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<a href="#" th:href="@{/persona/agregarContacto?id=0}">
+			<button class="btn btn-lg btn-primary btn-block" type="submit">
+				<span class="glyphicon glyphicon-user" aria-hidden="true">
+				</span>
+				Agregar Contacto
+			</button>
+		</a>
+	</div>
+</body>
+</html>
